@@ -16,6 +16,7 @@ activityCompose = "1.9.3"
 composeBom = "2024.04.01"
 loggingInterceptor = "4.12.0"
 lottieCompose = "6.6.0"
+navigationCompose = "2.8.3"
 roomKtx = "2.6.1"
 
 [libraries]
@@ -23,6 +24,7 @@ accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiper
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomKtx" }

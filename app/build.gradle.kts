@@ -68,6 +68,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    //Navigation Compose Implementation
+    implementation(libs.androidx.navigation.compose)
     //Retrofit implementations
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
@@ -89,4 +91,8 @@ dependencies {
     implementation(libs.accompanist.systemuicontroller)
     // Swipe Refresh
     implementation(libs.accompanist.swiperefresh)
+
+}
+kapt{
+    correctErrorTypes = true
 }
