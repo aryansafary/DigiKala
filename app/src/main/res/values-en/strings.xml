@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DigiKala</string>
+    <string name="Home">home</string>
+    <string name="Category">categories</string>
+    <string name="Basket">basket</string>
+    <string name="MyDigiKala">my Digikala</string>
+</resources>
