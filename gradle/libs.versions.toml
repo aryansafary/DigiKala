@@ -3,10 +3,11 @@ accompanistSystemuicontroller = "0.36.0"
 agp = "8.5.0"
 coilCompose = "3.0.0-rc02"
 converterGson = "2.9.0"
-hiltAndroid = "2.51.1"
-hiltAndroidCompiler = "2.38.1"
+datastorePreferences = "1.1.1"
+hiltAndroid = "2.52"
+hiltAndroidCompiler = "2.52"
 hiltNavigationCompose = "1.2.0"
-kotlin = "1.9.0"
+kotlin = "2.0.21"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -23,6 +24,7 @@ roomKtx = "2.6.1"
 accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSystemuicontroller" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
@@ -53,6 +55,8 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converte
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-hiltAndroid = {id = "com.google.dagger.hilt.android" , version = "2.51.1"}
+dagger-hilt = {id = "com.google.dagger.hilt.android" , version.ref = "hiltAndroid"}
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.23" }
 
 

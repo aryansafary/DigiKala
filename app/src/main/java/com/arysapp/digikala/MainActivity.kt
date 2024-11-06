@@ -15,35 +15,45 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.arysapp.digikala.navigation.BottomNavigationBar
 import com.arysapp.digikala.navigation.SetupNavGraph
+import com.arysapp.digikala.ui.componets.AppConfig
 import com.arysapp.digikala.ui.theme.DigiKalaTheme
 import com.arysapp.digikala.util.Constants.PERSIAN_LANGUAGE
+import com.arysapp.digikala.util.Constants.USER_LANGUAGE
 import com.arysapp.digikala.util.LocaleUtils
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             DigiKalaTheme {
                 navController = rememberNavController()
-                LocaleUtils.setLocale(LocalContext.current,PERSIAN_LANGUAGE)
-                CompositionLocalProvider(value = LocalLayoutDirection provides LayoutDirection.Rtl) {
+                AppConfig()
+                LocaleUtils.setLocale(LocalContext.current, USER_LANGUAGE)
+                val direction =
+                    if (USER_LANGUAGE == PERSIAN_LANGUAGE)
+                        LayoutDirection.Rtl
+                    else
+                        LayoutDirection.Ltr
+                CompositionLocalProvider(value = LocalLayoutDirection provides direction) {
                     Scaffold(
                         bottomBar = {
-                            BottomNavigationBar(navController =navController
-                                , onItemClick = {
+                            BottomNavigationBar(
+                                navController = navController, onItemClick = {
                                     navController.navigate(it.route)
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             )
                         }
-                        ){
-                    SetupNavGraph(navController = navController)
+                    ) {
+                        SetupNavGraph(navController = navController)
+                    }
                 }
             }
-                }
 
         }
     }
