@@ -2,6 +2,7 @@ package com.arysapp.digikala
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.arysapp.digikala.navigation.BottomNavigationBar
 import com.arysapp.digikala.navigation.SetupNavGraph
 import com.arysapp.digikala.ui.componets.AppConfig
+import com.arysapp.digikala.ui.componets.ChangColorStatusBar
 import com.arysapp.digikala.ui.theme.DigiKalaTheme
 import com.arysapp.digikala.util.Constants.PERSIAN_LANGUAGE
 import com.arysapp.digikala.util.Constants.USER_LANGUAGE
@@ -32,7 +34,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             DigiKalaTheme {
                 navController = rememberNavController()
+                ChangColorStatusBar(navController = navController)
                 AppConfig()
+                Log.e("language", USER_LANGUAGE)
                 LocaleUtils.setLocale(LocalContext.current, USER_LANGUAGE)
                 val direction =
                     if (USER_LANGUAGE == PERSIAN_LANGUAGE)
