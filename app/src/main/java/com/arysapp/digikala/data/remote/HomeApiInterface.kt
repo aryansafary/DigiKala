@@ -1,6 +1,11 @@
 package com.arysapp.digikala.data.remote
 
-interface HomeApiInterface {
+import com.arysapp.digikala.data.model.ResponseResult
+import com.arysapp.digikala.data.model.home.Slider
+import retrofit2.Response
+import retrofit2.http.GET
 
-    //Todo Api Service Call
+interface HomeApiInterface {
+    @GET("v1/getSlider")
+    suspend fun getSlider(): Response<ResponseResult<List<Slider>>>
 }

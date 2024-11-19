@@ -1,7 +1,8 @@
 [versions]
 accompanistSystemuicontroller = "0.36.0"
-agp = "8.5.0"
-coilCompose = "3.0.0-rc02"
+agp = "8.7.2"
+coilCompose = "3.0.3"
+glideCompose = "1.0.0-beta01"
 converterGson = "2.9.0"
 datastorePreferences = "1.1.1"
 hiltAndroid = "2.52"
@@ -21,6 +22,8 @@ navigationCompose = "2.8.3"
 roomKtx = "2.6.1"
 
 [libraries]
+accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistSystemuicontroller" }
+accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistSystemuicontroller" }
 accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSystemuicontroller" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,6 +34,7 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomKtx" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }

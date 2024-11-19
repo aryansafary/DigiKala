@@ -2,6 +2,8 @@ package com.arysapp.digikala.di
 
 import com.arysapp.digikala.util.Constants.BASE_URL
 import com.arysapp.digikala.util.Constants.TIME_OUT_SECONDS
+import com.arysapp.digikala.util.Constants.USER_LANGUAGE
+import com.arysapp.digikala.util.Constants.X_API_KEY
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,6 +34,13 @@ object NetworkModule {
         .connectTimeout(TIME_OUT_SECONDS, TimeUnit.SECONDS)
         .writeTimeout(TIME_OUT_SECONDS, TimeUnit.SECONDS)
         .readTimeout(TIME_OUT_SECONDS, TimeUnit.SECONDS)
+        .addInterceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("x-api-key", X_API_KEY)
+                .addHeader("lang", USER_LANGUAGE)
+                .build()
+            chain.proceed(request)
+        }
         .addInterceptor(interceptor())
         .build()
 

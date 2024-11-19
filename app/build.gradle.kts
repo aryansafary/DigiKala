@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -7,7 +9,9 @@ plugins {
     alias(libs.plugins.ksp)
 
 }
-
+val apiPropertiesFile = rootProject.file("key.properties")
+val apiProperties = Properties()
+apiProperties.load(apiPropertiesFile.inputStream())
 android {
     namespace = "com.arysapp.digikala"
     compileSdk = 34
@@ -19,12 +23,16 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField("String", "X_API_KEY", apiProperties.getProperty("X_API_KEY"))
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
     }
-
+    buildFeatures {
+        buildConfig =true
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -84,8 +92,9 @@ dependencies {
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.runtime)
-    //Coil for Show Photo
+    // for Show Photo
     implementation(libs.coil.compose)
+    implementation (libs.glide.compose)
     //Lottie for Animation
     implementation(libs.lottie.compose)
     //hilt Di
@@ -96,7 +105,9 @@ dependencies {
     implementation(libs.accompanist.systemuicontroller)
     // Swipe Refresh
     implementation(libs.accompanist.swiperefresh)
-
+   //Pager Accompanist implementations
+    implementation (libs.accompanist.pager)
+    implementation (libs.accompanist.pager.indicators)
 }
 kapt{
     correctErrorTypes = true
