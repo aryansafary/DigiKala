@@ -5,4 +5,5 @@
     <string name="Category">categories</string>
     <string name="Basket">basket</string>
     <string name="MyDigiKala">my Digikala</string>
+    <string name="searchIn">Search in</string>
 </resources>
