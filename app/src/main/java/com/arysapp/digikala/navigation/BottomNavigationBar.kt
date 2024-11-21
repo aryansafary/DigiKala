@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.arysapp.digikala.R
+import com.arysapp.digikala.ui.theme.selectedBottomBar
+import com.arysapp.digikala.ui.theme.unSelectedBottomBar
 
 
 @Composable
@@ -83,7 +85,7 @@ icon = {
     }
         Text(
             text = item.name,
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.h6,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 5.dp)
@@ -91,10 +93,10 @@ icon = {
     }
 },
     colors = NavigationBarItemDefaults.colors(
-        selectedIconColor = Color.Black,
-        unselectedIconColor = Color.Gray,
-        selectedTextColor = Color.Black,
-        unselectedTextColor = Color.Gray,
+        selectedIconColor = MaterialTheme.colors.selectedBottomBar,
+        unselectedIconColor = MaterialTheme.colors.unSelectedBottomBar,
+        selectedTextColor = MaterialTheme.colors.selectedBottomBar,
+        unselectedTextColor = MaterialTheme.colors.unSelectedBottomBar,
         indicatorColor = Color.Transparent
     )
 

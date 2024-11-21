@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -17,7 +18,7 @@ import androidx.navigation.NavController
 import com.arysapp.digikala.R
 import com.arysapp.digikala.navigation.Screens
 import com.arysapp.digikala.ui.componets.Loading3Dots
-import com.arysapp.digikala.ui.theme.CustomThemeManager
+import com.arysapp.digikala.ui.theme.splashBg
 import kotlinx.coroutines.delay
 
 @Composable
@@ -34,7 +35,7 @@ fun Splash(){
     Box(modifier =
     Modifier
         .fillMaxSize()
-        .background(CustomThemeManager.colors.mainColor),
+        .background(color = MaterialTheme.colors.splashBg),
         contentAlignment = Alignment.Center
     ){
 Image(

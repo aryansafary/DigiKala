@@ -14,7 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.arysapp.digikala.ui.theme.LocalElevation
 import com.arysapp.digikala.ui.theme.LocalShape
 import com.arysapp.digikala.ui.theme.LocalSpacing
+import com.arysapp.digikala.ui.theme.searchBarBg
 import com.arysapp.digikala.util.Constants.PERSIAN_LANGUAGE
 import com.arysapp.digikala.util.Constants.USER_LANGUAGE
 
@@ -51,7 +52,7 @@ fun SearchBarSection() {
                 .fillMaxSize()
                 .padding(LocalSpacing.current.small)
                 .clip(LocalShape.current.biggerSmall)
-                .background(Color(0xFFF1F0EE))
+                .background(MaterialTheme.colors.searchBarBg)
         ){
             SearchBarContent()
         }
@@ -76,7 +77,7 @@ private fun SearchBarContent() {
             modifier = Modifier.padding(start = 20.dp),
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Normal,
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.h2,
 
         )
         Image(
