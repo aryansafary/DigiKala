@@ -14,4 +14,5 @@ getDataStoreVariable(dataStore)
 
 fun getDataStoreVariable(dataStore:DataStoreViewModel){
     USER_LANGUAGE = dataStore.getUserLanguage()
+    dataStore.saveUserLanguage(USER_LANGUAGE)
 }

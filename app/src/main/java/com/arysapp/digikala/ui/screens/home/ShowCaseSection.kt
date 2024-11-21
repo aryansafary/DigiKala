@@ -16,6 +16,14 @@ import com.arysapp.digikala.ui.componets.RoundedIconBox
 import com.arysapp.digikala.ui.theme.LocalSpacing
 import com.arysapp.digikala.ui.theme.amber
 import com.arysapp.digikala.ui.theme.grayCategory
+import com.arysapp.digikala.util.Constants.AUCTION_URL
+import com.arysapp.digikala.util.Constants.DIGIJET_URL
+import com.arysapp.digikala.util.Constants.DIGIPAY_URL
+import com.arysapp.digikala.util.Constants.DIGIPLUS_URL
+import com.arysapp.digikala.util.Constants.GIFT_CARD_URL
+import com.arysapp.digikala.util.Constants.MORE_URL
+import com.arysapp.digikala.util.Constants.PINDO_URL
+import com.arysapp.digikala.util.Constants.SHOPPING_URL
 
 @Composable
 fun ShowCseSection(navController: NavHostController) {
@@ -40,7 +48,7 @@ fun ShowCseSection(navController: NavHostController) {
                 title = stringResource(R.string.digikala_jet),
                 onClick = onBoxClick(
                     navController = navController,
-                    url = "https://www.digikalajet.com/user/address"
+                    url =DIGIJET_URL
                 ),
             )
             RoundedIconBox(
@@ -48,7 +56,7 @@ fun ShowCseSection(navController: NavHostController) {
                 title = stringResource(R.string.digi_style),
                 onClick = onBoxClick(
                     navController = navController,
-                    url = "https://www.digistyle.com/sale-landing/?utm_source=digikala&utm_medium=circle_badge&utm_campaign=style&promo_name=style&promo_position=circle_badge"
+                    url = AUCTION_URL
                 ),
             )
             RoundedIconBox(
@@ -56,7 +64,7 @@ fun ShowCseSection(navController: NavHostController) {
                 title = stringResource(R.string.digi_pay),
                 onClick = onBoxClick(
                     navController = navController,
-                    url = "https://www.digikala.com/my-digipay/?promo_name=my-digipay&promo_position=circle_badge"
+                    url = DIGIPAY_URL
                 ),
             )
             RoundedIconBox(
@@ -65,7 +73,7 @@ fun ShowCseSection(navController: NavHostController) {
                 bgColor = MaterialTheme.colors.amber,
                 onClick = onBoxClick(
                     navController = navController,
-                    url = "https://www.pindo.ir/?utm_source=digikala&utm_medium=circle_badge&utm_campaign=pindo&promo_name=pindo&promo_position=circle_badge"
+                    url = PINDO_URL
 
                 ),
             )
@@ -83,7 +91,7 @@ fun ShowCseSection(navController: NavHostController) {
                 title = stringResource(R.string.digi_shopping),
                 onClick = onBoxClick(
                     navController = navController,
-                    url = ""
+                    url = SHOPPING_URL
                 ),
             )
             RoundedIconBox(
@@ -91,7 +99,7 @@ fun ShowCseSection(navController: NavHostController) {
                 title = stringResource(R.string.gift_card),
                 onClick = onBoxClick(
                     navController = navController,
-                    url = "https://www.digikala.com/landing/gift-card-landing/?promo_name=gift_landing&promo_position=circle_badge"
+                    url = GIFT_CARD_URL
 
 
                 ),
@@ -101,7 +109,7 @@ fun ShowCseSection(navController: NavHostController) {
                 title = stringResource(R.string.digi_plus),
                 onClick = onBoxClick(
                     navController = navController,
-                    url = "https://www.digikala.com/plus/landing/?promo_name=plus&promo_position=circle_badge"
+                    url = DIGIPLUS_URL
                 ),
             )
             RoundedIconBox(
@@ -110,7 +118,7 @@ fun ShowCseSection(navController: NavHostController) {
                 bgColor = MaterialTheme.colors.grayCategory,
                 onClick = onBoxClick(
                     navController = navController,
-                    url = ""
+                    url = MORE_URL
                 ),
             )
 

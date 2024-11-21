@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -23,6 +24,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.arysapp.digikala.R
 import com.arysapp.digikala.ui.theme.selectedBottomBar
 import com.arysapp.digikala.ui.theme.unSelectedBottomBar
+import com.arysapp.digikala.util.Constants.USER_LANGUAGE
+import com.arysapp.digikala.util.LocaleUtils
 
 
 @Composable
@@ -31,7 +34,8 @@ fun BottomNavigationBar(
     onItemClick : (BottomNavigationItem)->Unit,
     modifier: Modifier
 ){
-val items = listOf(
+    LocaleUtils.setLocale(LocalContext.current, USER_LANGUAGE)
+    val items = listOf(
     BottomNavigationItem(
         name = stringResource(id = R.string.Home),
         route = Screens.HomeScreen.route,

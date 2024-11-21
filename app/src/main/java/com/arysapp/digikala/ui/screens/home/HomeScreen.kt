@@ -8,8 +8,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.arysapp.digikala.util.Constants.USER_LANGUAGE
+import com.arysapp.digikala.util.LocaleUtils
 import com.arysapp.digikala.viewmodel.HomeViewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -25,6 +28,7 @@ fun Home(
     navController: NavHostController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
+    LocaleUtils.setLocale(LocalContext.current, USER_LANGUAGE)
     LaunchedEffect(true) {
         refreshDataFromServer(viewModel)
     }

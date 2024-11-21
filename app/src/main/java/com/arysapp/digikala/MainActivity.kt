@@ -55,7 +55,6 @@ class MainActivity : ComponentActivity() {
                         }
                     ) {
                         SetupNavGraph(navController = navController)
-                        Log.e("route", navController.currentBackStackEntry?.destination?.route+"")
                     }
                 }
             }

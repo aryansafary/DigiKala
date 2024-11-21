@@ -26,9 +26,14 @@ fun SplashScreen(navController: NavController){
 Splash()
 LaunchedEffect(true) {
     delay(3500)
-    navController.navigate(Screens.HomeScreen.route)
+    navController.navigate(Screens.HomeScreen.route) {
+        popUpTo(Screens.SplashScreen.route) {
+            inclusive = true
+        }
+    }
+    }
 }
-}
+
 
 @Composable
 fun Splash(){
