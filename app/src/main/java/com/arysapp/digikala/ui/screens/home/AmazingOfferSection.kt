@@ -36,7 +36,6 @@ var amazingOfferList by remember{
         is NetworkResult.Success->{
             amazingOfferList = amazingOfferResult.data ?: emptyList()
             loading = false
-            Log.e("data",amazingOfferResult.data?.get(0)?.image+"")
         }
         is NetworkResult.Error->{
             loading = false

@@ -15,7 +15,10 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val repository: HomeRepository): ViewModel() {
 val slider = MutableStateFlow<NetworkResult<List<Slider>>>(NetworkResult.Loading())
 val amazingItems = MutableStateFlow<NetworkResult<List<AmazingItem>>>(NetworkResult.Loading())
-   suspend fun getAllDataFromServer(){
+val superMarketItems = MutableStateFlow<NetworkResult<List<AmazingItem>>>(NetworkResult.Loading())
+
+
+    suspend fun getAllDataFromServer(){
        viewModelScope.launch{
            // Fire and Forget-->
            launch{
@@ -24,6 +27,11 @@ val amazingItems = MutableStateFlow<NetworkResult<List<AmazingItem>>>(NetworkRes
            launch{
            amazingItems.emit(repository.getAmazing())
            }
+           launch {
+               superMarketItems.emit(repository.getAmazingSuperMarketItems())
+           }
+
+
 
        }
    }
