@@ -2,6 +2,7 @@ package com.arysapp.digikala.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.arysapp.digikala.data.model.home.AmazingItem
 import com.arysapp.digikala.data.model.home.Slider
 import com.arysapp.digikala.data.remote.NetworkResult
 import com.arysapp.digikala.repository.HomeRepository
@@ -13,12 +14,21 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: HomeRepository): ViewModel() {
 val slider = MutableStateFlow<NetworkResult<List<Slider>>>(NetworkResult.Loading())
-    suspend fun getSlider() {
-        viewModelScope.launch {
-        slider.emit(repository.getSlider())
-        }
+val amazingItems = MutableStateFlow<NetworkResult<List<AmazingItem>>>(NetworkResult.Loading())
+   suspend fun getAllDataFromServer(){
+       viewModelScope.launch{
+           // Fire and Forget-->
+           launch{
+           slider.emit(repository.getSlider())
+           }
+           launch{
+           amazingItems.emit(repository.getAmazing())
+           }
+
+       }
+   }
 
 
-    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.arysapp.digikala.repository
 
+import com.arysapp.digikala.data.model.home.AmazingItem
 import com.arysapp.digikala.data.model.home.Slider
 import com.arysapp.digikala.data.remote.BaseApiResponse
 import com.arysapp.digikala.data.remote.HomeApiInterface
@@ -12,4 +13,9 @@ class HomeRepository @Inject constructor(private val apiInterface: HomeApiInterf
     = safeApiCall {
             apiInterface.getSlider()
         }
+
+    suspend fun getAmazing(): NetworkResult<List<AmazingItem>>
+            = safeApiCall {
+        apiInterface.getAmazingItem()
+    }
 }
