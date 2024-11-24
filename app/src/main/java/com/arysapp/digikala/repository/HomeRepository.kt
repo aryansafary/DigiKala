@@ -3,6 +3,7 @@ package com.arysapp.digikala.repository
 import com.arysapp.digikala.data.model.home.AmazingItem
 import com.arysapp.digikala.data.model.home.MainCategory
 import com.arysapp.digikala.data.model.home.Slider
+import com.arysapp.digikala.data.model.home.StoreProduct
 import com.arysapp.digikala.data.remote.BaseApiResponse
 import com.arysapp.digikala.data.remote.HomeApiInterface
 import com.arysapp.digikala.data.remote.NetworkResult
@@ -37,6 +38,17 @@ class HomeRepository @Inject constructor(private val apiInterface: HomeApiInterf
     suspend fun getCenterBanners(): NetworkResult<List<Slider>> =
         safeApiCall {
             apiInterface.getCenterBanners()
+        }
+
+    suspend fun getBestSellerItems(): NetworkResult<List<StoreProduct>> =
+        safeApiCall {
+            apiInterface.getBestSellerItems()
+        }
+
+
+    suspend fun getMostVisitedItems(): NetworkResult<List<StoreProduct>> =
+        safeApiCall {
+            apiInterface.getMostVisitedItems()
         }
 
 }
