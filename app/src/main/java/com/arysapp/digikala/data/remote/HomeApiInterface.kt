@@ -23,5 +23,9 @@ interface HomeApiInterface {
     @GET("v1/getCategories")
     suspend fun getCategories() : Response<ResponseResult<List<MainCategory>>>
 
+    @GET("v1/getCenterBanners")
+    suspend fun getCenterBanners() : Response<ResponseResult<List<Slider>>>
+
+
 
 }

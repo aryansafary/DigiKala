@@ -34,5 +34,9 @@ class HomeRepository @Inject constructor(private val apiInterface: HomeApiInterf
         safeApiCall {
             apiInterface.getCategories()
         }
+    suspend fun getCenterBanners(): NetworkResult<List<Slider>> =
+        safeApiCall {
+            apiInterface.getCenterBanners()
+        }
 
 }
