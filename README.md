@@ -98,7 +98,7 @@ A fully-featured **e-commerce Android application** inspired by DigiKala, offeri
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YourUsername/DigiKalaApp.git
+   git clone https://github.com/AryanSafary/DigiKala.git
    ```
 2. Open the project in Android Studio.
 3. Sync Gradle files and build the project.
