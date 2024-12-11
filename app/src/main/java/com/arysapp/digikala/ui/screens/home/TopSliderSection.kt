@@ -24,10 +24,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.arysapp.digikala.data.model.home.Slider
 import com.arysapp.digikala.data.remote.NetworkResult
+import com.arysapp.digikala.ui.componets.OurLoading
 import com.arysapp.digikala.ui.theme.LocalShape
 import com.arysapp.digikala.ui.theme.LocalSpacing
 import com.arysapp.digikala.viewmodel.HomeViewModel
@@ -59,49 +61,54 @@ fun TopSliderSection(viewModel: HomeViewModel = hiltViewModel()) {
         }
 
     }
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
-            .background(Color.White)
-    ) {
+    if (loading) {
+        val config = LocalConfiguration.current
+        OurLoading(config.screenHeightDp.dp, true)
+    } else {
+
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .height(200.dp)
                 .background(Color.White)
-                .padding(
-                    horizontal = LocalSpacing.current.extraSmall,
-                    vertical = LocalSpacing.current.small
-                )
         ) {
-            val pagerState = rememberPagerState()
-            var imageUrl by remember {
-                mutableStateOf("")
-            }
-            HorizontalPager(
-                count = sliderList.size,
-                state = pagerState,
-                contentPadding = PaddingValues(horizontal = LocalSpacing.current.medium),
+            Column(
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-            ) { index ->
-
-                imageUrl = sliderList[index].image
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.BottomCenter
-                ) {
-                    //Using Glide
-                    GlideImage(
-                        model = imageUrl,
-                        contentDescription = "Test",
-                        modifier = Modifier
-                            .padding(LocalSpacing.current.small)
-                            .clip(LocalShape.current.medium)
-                            .fillMaxSize(),
-                        contentScale = ContentScale.FillBounds
+                    .fillMaxSize()
+                    .background(Color.White)
+                    .padding(
+                        horizontal = LocalSpacing.current.extraSmall,
+                        vertical = LocalSpacing.current.small
                     )
+            ) {
+                val pagerState = rememberPagerState()
+                var imageUrl by remember {
+                    mutableStateOf("")
+                }
+                HorizontalPager(
+                    count = sliderList.size,
+                    state = pagerState,
+                    contentPadding = PaddingValues(horizontal = LocalSpacing.current.medium),
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                ) { index ->
+
+                    imageUrl = sliderList[index].image
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.BottomCenter
+                    ) {
+                        //Using Glide
+                        GlideImage(
+                            model = imageUrl,
+                            contentDescription = "Test",
+                            modifier = Modifier
+                                .padding(LocalSpacing.current.small)
+                                .clip(LocalShape.current.medium)
+                                .fillMaxSize(),
+                            contentScale = ContentScale.FillBounds
+                        )
 
 //    Using Coil3
 //                    AsyncImage(
@@ -116,26 +123,27 @@ fun TopSliderSection(viewModel: HomeViewModel = hiltViewModel()) {
 //                            .fillMaxSize(),
 //                        contentScale = ContentScale.FillBounds
 //                    )
-                    HorizontalPagerIndicator(
-                        pagerState = pagerState,
-                        modifier = Modifier
-                            .align(Alignment.BottomCenter)
-                            .padding(LocalSpacing.current.semiLarge),
-                        activeColor = Color.Black,
-                        inactiveColor = Color.White,
-                        indicatorShape = CircleShape,
-                        indicatorWidth = LocalSpacing.current.small,
-                        indicatorHeight = LocalSpacing.current.small,
+                        HorizontalPagerIndicator(
+                            pagerState = pagerState,
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .padding(LocalSpacing.current.semiLarge),
+                            activeColor = Color.Black,
+                            inactiveColor = Color.White,
+                            indicatorShape = CircleShape,
+                            indicatorWidth = LocalSpacing.current.small,
+                            indicatorHeight = LocalSpacing.current.small,
 
-                        )
+                            )
+                    }
+
                 }
-
-            }
-            LaunchedEffect(pagerState.currentPage) {
-                delay(6000)
-                var newPosition = pagerState.currentPage + 1
-                if (newPosition >= sliderList.size) newPosition = 0
-                pagerState.scrollToPage(newPosition)
+                LaunchedEffect(pagerState.currentPage) {
+                    delay(6000)
+                    var newPosition = pagerState.currentPage + 1
+                    if (newPosition >= sliderList.size) newPosition = 0
+                    pagerState.scrollToPage(newPosition)
+                }
             }
         }
     }
