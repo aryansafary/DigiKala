@@ -1,9 +1,10 @@
 package com.arysapp.digikala.ui.screens.home
-import androidx.compose.foundation.Image
+
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Card
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Text
@@ -11,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -18,17 +20,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.arysapp.digikala.data.model.home.AmazingItem
-import com.arysapp.digikala.ui.theme.DarkCyan
-import com.arysapp.digikala.ui.theme.DigikalaDarkRed
-import com.arysapp.digikala.ui.theme.DigikalaLightRed
-import com.arysapp.digikala.ui.theme.darkText
-import com.arysapp.digikala.ui.theme.extraSmall
-import com.arysapp.digikala.ui.theme.roundedCornerShape
-import com.arysapp.digikala.ui.theme.semiDarkText
-import com.arysapp.digikala.ui.theme.spacing
+import com.arysapp.digikala.navigation.Screen
+import com.arysapp.digikala.ui.theme.*
+import com.arysapp.digikala.util.Constants
 import com.arysapp.digikala.util.DigitHelper.applyDiscount
-import com.arysapp.digikala.util.DigitHelper.digitByLocate
 import com.arysapp.digikala.util.DigitHelper.digitByLocateAndSeparator
 import com.arysapp.digikala.R
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
@@ -36,7 +33,10 @@ import com.bumptech.glide.integration.compose.GlideImage
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun AmazingItem(item: AmazingItem) {
+fun AmazingItem(
+    item: AmazingItem,
+    navController: NavController
+) {
 
     Card(
         modifier = Modifier
@@ -44,8 +44,12 @@ fun AmazingItem(item: AmazingItem) {
             .padding(
                 vertical = MaterialTheme.spacing.semiLarge,
                 horizontal = MaterialTheme.spacing.semiSmall
-            ),
-        shape = MaterialTheme.roundedCornerShape.small,
+            )
+            .clickable{
+                navController.navigate(Screen.ProductDetail.withArgs(item._id))
+            }
+        ,
+        shape = MaterialTheme.roundedShape.small,
     ) {
 
         Column(
@@ -66,7 +70,7 @@ fun AmazingItem(item: AmazingItem) {
                         .padding(start = MaterialTheme.spacing.small),
                     style = MaterialTheme.typography.extraSmall,
                     fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colors.DigikalaLightRed,
+                    color = MaterialTheme.colors.DigikalaLightRedText,
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -152,7 +156,7 @@ fun AmazingItem(item: AmazingItem) {
                             .wrapContentHeight(Alignment.CenterVertically)
                     ) {
                         Text(
-                            text = "${digitByLocate(item.discountPercent.toString())}%",
+                            text = "${digitByLocateAndSeparator(item.discountPercent.toString())}%",
                             color = Color.White,
                             style = MaterialTheme.typography.h6,
                             fontWeight = FontWeight.Bold,
@@ -169,8 +173,8 @@ fun AmazingItem(item: AmazingItem) {
                                 fontWeight = FontWeight.SemiBold,
                             )
 
-                            Image(
-                                painter = painterResource(id = R.drawable.toman),
+                            Icon(
+                                painter = currencyLogoChangeByLanguage(),
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(MaterialTheme.spacing.semiLarge)
@@ -198,4 +202,13 @@ fun AmazingItem(item: AmazingItem) {
 
     }
 
+}
+
+@Composable
+private fun currencyLogoChangeByLanguage(): Painter {
+    return if (Constants.USER_LANGUAGE == Constants.ENGLISH_LANGUAGE) {
+        painterResource(id = R.drawable.dollar)
+    } else {
+        painterResource(id = R.drawable.toman)
+    }
 }

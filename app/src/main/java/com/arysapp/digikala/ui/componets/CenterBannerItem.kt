@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.arysapp.digikala.ui.theme.roundedCornerShape
+import com.arysapp.digikala.ui.theme.roundedShape
 import com.arysapp.digikala.ui.theme.spacing
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
@@ -21,7 +21,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 fun CenterBannerItem(imageUrl: String) {
 
     Card(
-        shape = MaterialTheme.roundedCornerShape.semiMedium,
+        shape = MaterialTheme.roundedShape.semiMedium,
         modifier = Modifier
             .fillMaxWidth()
             .height(170.dp)

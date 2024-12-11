@@ -3,20 +3,19 @@ package com.arysapp.digikala.ui.screens.home
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.arysapp.digikala.data.model.home.StoreProduct
 import com.arysapp.digikala.data.remote.NetworkResult
-import com.arysapp.digikala.ui.theme.darkText
 import com.arysapp.digikala.ui.theme.spacing
 import com.arysapp.digikala.viewmodel.HomeViewModel
 import com.arysapp.digikala.R
+import com.arysapp.digikala.ui.theme.darkText
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -68,7 +67,7 @@ fun MostDiscountedSection(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight(),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Start
         ) {
 
             for (item in mostDiscountedList) {

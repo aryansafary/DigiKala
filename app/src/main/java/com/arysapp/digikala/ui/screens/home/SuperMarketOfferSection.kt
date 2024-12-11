@@ -1,4 +1,5 @@
 package com.arysapp.digikala.ui.screens.home
+
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -9,15 +10,17 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.arysapp.digikala.R
+import androidx.navigation.NavController
 import com.arysapp.digikala.data.model.home.AmazingItem
 import com.arysapp.digikala.data.remote.NetworkResult
 import com.arysapp.digikala.ui.theme.DigikalaLightGreen
 import com.arysapp.digikala.ui.theme.DigikalaLightRed
 import com.arysapp.digikala.viewmodel.HomeViewModel
+import com.arysapp.digikala.R
 
 @Composable
 fun SuperMarketOfferSection(
+    navController: NavController,
     viewModel: HomeViewModel = hiltViewModel()
 ){
 
@@ -56,7 +59,7 @@ fun SuperMarketOfferSection(
             }
 
             items(superMarketItemList) { item ->
-                AmazingItem(item = item)
+                AmazingItem(item = item ,  navController = navController)
             }
 
             item {
@@ -69,4 +72,3 @@ fun SuperMarketOfferSection(
     }
 
 }
-

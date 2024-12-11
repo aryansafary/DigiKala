@@ -1,10 +1,11 @@
 package com.arysapp.digikala.ui.screens.home
+
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,16 +13,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.arysapp.digikala.data.model.home.StoreProduct
 import com.arysapp.digikala.data.remote.NetworkResult
-import com.arysapp.digikala.ui.theme.DarkCyan
-import com.arysapp.digikala.ui.theme.darkText
 import com.arysapp.digikala.ui.theme.spacing
 import com.arysapp.digikala.viewmodel.HomeViewModel
 import com.arysapp.digikala.R
+import com.arysapp.digikala.ui.theme.DarkCyan
+import com.arysapp.digikala.ui.theme.darkText
 
 @Composable
 fun MostFavoriteProductSection(
+    navController: NavHostController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     var mostFavoriteList by remember {
@@ -82,7 +85,7 @@ fun MostFavoriteProductSection(
 
         LazyRow {
             items(mostFavoriteList) { item ->
-                MostFavoriteProductsOffer(item)
+                MostFavoriteProductsOffer(navController , item)
             }
             item{
                 MostFavoriteProductsShowMore()

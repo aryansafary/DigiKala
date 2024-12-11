@@ -3,109 +3,127 @@ package com.arysapp.digikala.navigation
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
-import androidx.compose.material3.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.arysapp.digikala.R
+import com.arysapp.digikala.ui.screens.basket.IconWithBadge
+import com.arysapp.digikala.ui.theme.bottomBar
 import com.arysapp.digikala.ui.theme.selectedBottomBar
 import com.arysapp.digikala.ui.theme.unSelectedBottomBar
-import com.arysapp.digikala.util.Constants.USER_LANGUAGE
+import com.arysapp.digikala.util.Constants
 import com.arysapp.digikala.util.LocaleUtils
-
+import com.arysapp.digikala.viewmodel.BasketViewModel
 
 @Composable
 fun BottomNavigationBar(
     navController: NavController,
-    onItemClick : (BottomNavigationItem)->Unit,
-    modifier: Modifier
-){
-    LocaleUtils.setLocale(LocalContext.current, USER_LANGUAGE)
-    val items = listOf(
-    BottomNavigationItem(
-        name = stringResource(id = R.string.Home),
-        route = Screens.HomeScreen.route,
-        selectedIcon = painterResource(id =R.drawable.home_fill ),
-        deselectedIcon = painterResource(id =R.drawable.home_outline),
-    ),
-    BottomNavigationItem(
-        name = stringResource(id = R.string.Category),
-        route = Screens.CategoryScreen.route,
-        selectedIcon = painterResource(id =R.drawable.category_fill ),
-        deselectedIcon = painterResource(id =R.drawable.category_outline),
-    ),
-    BottomNavigationItem(
-        name =  stringResource(id = R.string.Basket),
-        route = Screens.BasketScreen.route,
-        selectedIcon = painterResource(id = R.drawable.cart_fill ),
-        deselectedIcon = painterResource(id =R.drawable.cart_outline),
-    ),
-    BottomNavigationItem(
-        name =  stringResource(id = R.string.MyDigiKala),
-        route = Screens.ProfileScreen.route,
-        selectedIcon = painterResource(id =R.drawable.user_fill ),
-        deselectedIcon = painterResource(id =R.drawable.user_outline),
-    ),
-)
-val backStackEntry = navController.currentBackStackEntryAsState()
-val showBottomNavigationBar = backStackEntry.value?.destination?.route in items.map { it.route }
-if(showBottomNavigationBar){
-    BottomAppBar(
-        modifier = modifier,
-        containerColor = Color.White,
-        contentColor = Color.Gray
-    ) {
-items.forEachIndexed{ _, item ->
-val selected = item.route == backStackEntry.value?.destination?.route
-NavigationBarItem(
-    selected =selected ,
-    onClick ={ onItemClick(item) },
-icon = {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-    if(selected){
-    Icon(
-        painter = item.selectedIcon,
-        contentDescription =item.name,
-        modifier = Modifier.height(24.dp))
-    }else{
-        Icon(
-            painter = item.deselectedIcon,
-            contentDescription =item.name,
-            modifier = Modifier.height(24.dp))
-    }
-        Text(
-            text = item.name,
-            style = MaterialTheme.typography.h6,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 5.dp)
-            )
-    }
-},
-    colors = NavigationBarItemDefaults.colors(
-        selectedIconColor = MaterialTheme.colors.selectedBottomBar,
-        unselectedIconColor = MaterialTheme.colors.unSelectedBottomBar,
-        selectedTextColor = MaterialTheme.colors.selectedBottomBar,
-        unselectedTextColor = MaterialTheme.colors.unSelectedBottomBar,
-        indicatorColor = Color.Transparent
-    )
+    onItemClick: (BottomNavItem) -> Unit,
+    viewModel: BasketViewModel = hiltViewModel()
 
-    )
-}
+) {
+    LocaleUtils.setLocale(LocalContext.current, Constants.USER_LANGUAGE)
+
+    val items = listOf(
+        BottomNavItem(
+            name = stringResource(id = R.string.home),
+            route = Screen.Home.route,
+            selectedIcon = painterResource(id = R.drawable.home_fill),
+            deSelectedIcon = painterResource(id = R.drawable.home_outline)
+        ),
+        BottomNavItem(
+            name = stringResource(id = R.string.category),
+            route = Screen.Category.route,
+            selectedIcon = painterResource(id = R.drawable.category_fill),
+            deSelectedIcon = painterResource(id = R.drawable.category_outline)
+        ),
+        BottomNavItem(
+            name = stringResource(id = R.string.basket),
+            route = Screen.Basket.route,
+            selectedIcon = painterResource(id = R.drawable.cart_fill),
+            deSelectedIcon = painterResource(id = R.drawable.cart_outline)
+        ),
+        BottomNavItem(
+            name = stringResource(id = R.string.my_digikala),
+            route = Screen.Profile.route,
+            selectedIcon = painterResource(id = R.drawable.user_fill),
+            deSelectedIcon = painterResource(id = R.drawable.user_outline)
+        ),
+
+        )
+
+    val backStackEntry = navController.currentBackStackEntryAsState()
+    val showBottomBar = backStackEntry.value?.destination?.route in items.map { it.route }
+
+    if (showBottomBar) {
+        BottomNavigation(
+            modifier = Modifier.height(60.dp),
+            backgroundColor = MaterialTheme.colors.bottomBar,
+            elevation = 5.dp
+        ) {
+            val cartCounter by viewModel.currentCartItemsCount.collectAsState(0)
+            items.forEachIndexed { index, item ->
+                val selected = item.route == backStackEntry.value?.destination?.route
+                BottomNavigationItem(
+                    selected = selected,
+                    onClick = { onItemClick(item) },
+                    selectedContentColor = MaterialTheme.colors.selectedBottomBar,
+                    unselectedContentColor = MaterialTheme.colors.unSelectedBottomBar,
+                    icon = {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            if (selected) {
+                                if (index == 2 && cartCounter > 0) {
+                                    IconWithBadge(
+                                       cartCounter = cartCounter,
+                                       icon =  item.selectedIcon
+                                    )
+                                } else {
+                                    Icon(
+                                        modifier = Modifier.height(24.dp),
+                                        painter = item.selectedIcon,
+                                        contentDescription = item.name
+                                    )
+                                }
+
+                            } else {
+                                if (index == 2 && cartCounter > 0) {
+                                    IconWithBadge(
+                                        cartCounter = cartCounter,
+                                        icon = item.deSelectedIcon
+                                    )
+                                } else {
+                                    Icon(
+                                        modifier = Modifier.height(24.dp),
+                                        painter = item.deSelectedIcon,
+                                        contentDescription = item.name
+                                    )
+                                }
+
+                            }
+                            Text(
+                                text = item.name,
+                                textAlign = TextAlign.Center,
+                                style = MaterialTheme.typography.h6,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(top = 5.dp)
+                            )
+                        }
+                    }
+                )
+            }
+        }
     }
-}
+
 }

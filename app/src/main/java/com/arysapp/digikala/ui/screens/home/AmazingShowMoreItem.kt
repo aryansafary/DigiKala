@@ -2,7 +2,6 @@ package com.arysapp.digikala.ui.screens.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
-import androidx.compose.material3.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,12 +12,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.arysapp.digikala.ui.theme.roundedShape
+import com.arysapp.digikala.ui.theme.spacing
+import com.arysapp.digikala.ui.components.IconWithRotate
 import com.arysapp.digikala.ui.theme.DigikalaLightRed
 import com.arysapp.digikala.ui.theme.darkText
-import com.arysapp.digikala.ui.theme.roundedCornerShape
-import com.arysapp.digikala.ui.theme.spacing
 import com.arysapp.digikala.R
-
 
 @Composable
 fun AmazingShowMoreItem() {
@@ -30,9 +29,8 @@ fun AmazingShowMoreItem() {
                 start = MaterialTheme.spacing.semiSmall,
                 top = MaterialTheme.spacing.semiLarge
             ),
-        shape = MaterialTheme.roundedCornerShape.small,
+        shape = MaterialTheme.roundedShape.small,
         contentColor = Color.White
-
     ) {
 
         Column(
@@ -41,12 +39,12 @@ fun AmazingShowMoreItem() {
             modifier = Modifier.fillMaxWidth()
         ) {
 
-            Icon(
-                painter = painterResource(id = R.drawable.show_more),
-                contentDescription = "",
-                tint = MaterialTheme.colors.DigikalaLightRed,
-                modifier = Modifier.size(40.dp, 40.dp)
+
+            IconWithRotate(
+                painterResource(id = R.drawable.show_more),
+                MaterialTheme.colors.DigikalaLightRed
             )
+
 
             Spacer(modifier = Modifier.height(20.dp))
 

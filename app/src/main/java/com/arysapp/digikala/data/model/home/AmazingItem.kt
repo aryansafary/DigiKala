@@ -7,5 +7,4 @@ data class AmazingItem(
     val price: Long,
     val discountPercent: Int,
     val image: String,
-
 )

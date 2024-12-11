@@ -9,56 +9,58 @@ import com.arysapp.digikala.data.remote.HomeApiInterface
 import com.arysapp.digikala.data.remote.NetworkResult
 import javax.inject.Inject
 
-class HomeRepository @Inject constructor(private val apiInterface: HomeApiInterface) : BaseApiResponse() {
+class HomeRepository @Inject constructor(private val api: HomeApiInterface) : BaseApiResponse() {
 
-    suspend fun getSlider(): NetworkResult<List<Slider>>
-    = safeApiCall {
-            apiInterface.getSlider()
+    suspend fun getSlider(): NetworkResult<List<Slider>> =
+        safeApiCall {
+            api.getSlider()
         }
 
-    suspend fun getAmazing(): NetworkResult<List<AmazingItem>>
-            = safeApiCall {
-        apiInterface.getAmazingItem()
-    }
+    suspend fun getAmazingItems(): NetworkResult<List<AmazingItem>> =
+        safeApiCall {
+            api.getAmazingItems()
+        }
 
     suspend fun getAmazingSuperMarketItems(): NetworkResult<List<AmazingItem>> =
         safeApiCall {
-            apiInterface.getAmazingSuperMarketItems()
+            api.getAmazingSuperMarketItems()
         }
 
     suspend fun getProposalBanners(): NetworkResult<List<Slider>> =
         safeApiCall {
-            apiInterface.getProposalBanners()
+            api.getProposalBanners()
         }
 
     suspend fun getCategories(): NetworkResult<List<MainCategory>> =
         safeApiCall {
-            apiInterface.getCategories()
+            api.getCategories()
         }
+
     suspend fun getCenterBanners(): NetworkResult<List<Slider>> =
         safeApiCall {
-            apiInterface.getCenterBanners()
+            api.getCenterBanners()
         }
+
 
     suspend fun getBestSellerItems(): NetworkResult<List<StoreProduct>> =
         safeApiCall {
-            apiInterface.getBestSellerItems()
+            api.getBestSellerItems()
         }
 
 
     suspend fun getMostVisitedItems(): NetworkResult<List<StoreProduct>> =
         safeApiCall {
-            apiInterface.getMostVisitedItems()
+            api.getMostVisitedItems()
         }
 
     suspend fun getMostFavoriteItems(): NetworkResult<List<StoreProduct>> =
         safeApiCall {
-            apiInterface.getMostFavoriteItems()
+            api.getMostFavoriteItems()
         }
 
     suspend fun getMostDiscountedItems(): NetworkResult<List<StoreProduct>> =
         safeApiCall {
-            apiInterface.getMostDiscountedItems()
+            api.getMostDiscountedItems()
         }
 
 

@@ -3,7 +3,7 @@ package com.arysapp.digikala.ui.screens.home
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,10 +15,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.arysapp.digikala.data.model.home.MainCategory
 import com.arysapp.digikala.data.remote.NetworkResult
-import com.arysapp.digikala.ui.theme.darkText
 import com.arysapp.digikala.ui.theme.spacing
 import com.arysapp.digikala.viewmodel.HomeViewModel
 import com.arysapp.digikala.R
+import com.arysapp.digikala.ui.theme.darkText
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 
@@ -48,7 +48,7 @@ fun CategoryListSection(
             loading = true
         }
     }
-
+    
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -76,7 +76,7 @@ fun CategoryListSection(
             }
         }
     }
-
+    
 }
 
 @OptIn(ExperimentalGlideComposeApi::class)

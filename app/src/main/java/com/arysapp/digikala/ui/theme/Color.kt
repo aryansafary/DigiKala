@@ -15,6 +15,12 @@ val Colors.splashBg: Color
     get() = Color(0xFFed1b34)
 
 
+
+val Colors.CursorColor : Color
+    @Composable
+    get() = Color(0xFF018577)
+
+
 val Colors.selectedBottomBar: Color
     @Composable
     get() = if (isLight) Color(0xFF43474C) else Color(0xFFCFD4DA)
@@ -23,6 +29,19 @@ val Colors.unSelectedBottomBar: Color
     @Composable
     get() = if (isLight) Color(0xFFA4A1A1) else Color(0xFF575A5E)
 
+
+val Colors.bottomBar: Color
+    @Composable
+    get() = if (isLight) Color(0xFFFFFFFF) else Color(0xFF303235)
+
+
+val Colors.Gold : Color
+    @Composable
+    get() = Color(0xFFf9bc01)
+
+val Colors.grayAlpha: Color
+    @Composable
+    get() = Color(0xFFc1c2c6)
 
 val Colors.searchBarBg: Color
     @Composable
@@ -45,21 +64,47 @@ val Colors.grayCategory: Color
 
 val Colors.DigikalaLightRed: Color
     @Composable
-    get() = Color(0xffef4056)
+    get() = if (isLight) Color(0xffef4056) else Color(0xFF8D2633)
+
+val Colors.DigikalaLightRedText: Color
+    @Composable
+    get() = if (isLight) Color(0xffef4056) else Color(0xFFFFFFFF)
 
 val Colors.DigikalaDarkRed: Color
     @Composable
     get() = Color(0xFFe6123d)
 
+val Colors.digikalaRed: Color
+    @Composable
+    get() = Color(0xFFed1b34)
 
 val Colors.semiDarkText: Color
     @Composable
     get() = if (isLight) Color(0xFF5C5E61) else Color(0xFFD8D8D8)
 
+val Colors.settingArrow: Color
+    @Composable
+    get() = if (isLight) Color(0xFF9E9FB1) else Color(0xFFD8D8D8)
+
 val Colors.DarkCyan: Color
     @Composable
     get() = Color(0xFF0fabc6)
 
+val Colors.LightCyan: Color
+    @Composable
+    get() = Color(0xFF17BFD3)
+
+val Colors.Oranges: Color
+    @Composable
+    get() = Color(0xFFFF5722)
+
+
+
 val Colors.DigikalaLightGreen: Color
     @Composable
-    get() = Color(0xff86bf3c)
+    get() = if (isLight) Color(0xff86bf3c) else Color(0xFF3A531A)
+
+
+val Colors.Green : Color
+    @Composable
+    get() = Color(0xFF00A049)

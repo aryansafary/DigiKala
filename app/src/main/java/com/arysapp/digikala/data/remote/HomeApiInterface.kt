@@ -9,11 +9,12 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface HomeApiInterface {
+
     @GET("v1/getSlider")
-    suspend fun getSlider(): Response<ResponseResult<List<Slider>>>
+    suspend fun getSlider() : Response<ResponseResult<List<Slider>>>
 
     @GET("v1/getAmazingProducts")
-    suspend fun getAmazingItem(): Response<ResponseResult<List<AmazingItem>>>
+    suspend fun getAmazingItems() : Response<ResponseResult<List<AmazingItem>>>
 
     @GET("v1/getSuperMarketAmazingProducts")
     suspend fun getAmazingSuperMarketItems() : Response<ResponseResult<List<AmazingItem>>>
@@ -26,7 +27,6 @@ interface HomeApiInterface {
 
     @GET("v1/getCenterBanners")
     suspend fun getCenterBanners() : Response<ResponseResult<List<Slider>>>
-
 
     @GET("v1/getBestsellerProducts")
     suspend fun getBestSellerItems() : Response<ResponseResult<List<StoreProduct>>>

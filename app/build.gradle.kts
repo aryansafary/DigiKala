@@ -24,6 +24,8 @@ android {
         versionName = "1.0"
 
         buildConfigField("String", "X_API_KEY", apiProperties.getProperty("X_API_KEY"))
+        buildConfigField("String" , "KEY" , apiProperties.getProperty("KEY"))
+        buildConfigField("String" , "IV" , apiProperties.getProperty("IV"))
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -108,6 +110,19 @@ dependencies {
    //Pager Accompanist implementations
     implementation (libs.accompanist.pager)
     implementation (libs.accompanist.pager.indicators)
+    //paging3
+    implementation( "androidx.paging:paging-compose:3.3.4")
+
+    //chart
+    implementation("com.patrykandpatrick.vico:compose:1.13.0")
+
+    //gson
+    implementation ("com.google.code.gson:gson:2.10.1")
+
+    //icon
+    implementation ("androidx.compose.material:material-icons-extended:1.7.5")
+
+
 }
 kapt{
     correctErrorTypes = true

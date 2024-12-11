@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -14,13 +14,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.arysapp.digikala.R
 import com.arysapp.digikala.data.model.home.StoreProduct
 import com.arysapp.digikala.data.remote.NetworkResult
 import com.arysapp.digikala.ui.theme.darkText
 import com.arysapp.digikala.ui.theme.spacing
 import com.arysapp.digikala.util.DigitHelper.digitByLocate
 import com.arysapp.digikala.viewmodel.HomeViewModel
-import com.arysapp.digikala.R
 
 @Composable
 fun BestSellerOfferSection(

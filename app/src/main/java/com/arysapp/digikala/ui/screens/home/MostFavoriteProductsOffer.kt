@@ -1,7 +1,7 @@
 package com.arysapp.digikala.ui.screens.home
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -10,27 +10,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.arysapp.digikala.R
 import com.arysapp.digikala.data.model.home.StoreProduct
-import com.arysapp.digikala.ui.theme.darkText
-import com.arysapp.digikala.ui.theme.spacing
+import com.arysapp.digikala.navigation.Screen
+import com.arysapp.digikala.ui.theme.*
+import com.arysapp.digikala.util.Constants
 import com.arysapp.digikala.util.DigitHelper
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.arysapp.digikala.R
-import com.arysapp.digikala.ui.theme.DarkCyan
-import com.arysapp.digikala.ui.theme.DigikalaDarkRed
-import com.arysapp.digikala.ui.theme.extraSmall
-import com.arysapp.digikala.ui.theme.semiDarkText
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun MostFavoriteProductsOffer(item: StoreProduct) {
+fun MostFavoriteProductsOffer(
+    navController: NavHostController,
+    item: StoreProduct
+) {
 
     Column(
         modifier = Modifier
@@ -38,7 +40,10 @@ fun MostFavoriteProductsOffer(item: StoreProduct) {
             .padding(
                 vertical = MaterialTheme.spacing.semiLarge,
                 horizontal = MaterialTheme.spacing.semiSmall
-            ),
+            )
+            .clickable {
+                navController.navigate(Screen.ProductDetail.withArgs(item._id))
+            },
     ) {
 
         Row {
@@ -137,7 +142,7 @@ fun MostFavoriteProductsOffer(item: StoreProduct) {
                                 .wrapContentHeight(Alignment.CenterVertically)
                         ) {
                             Text(
-                                text = "${DigitHelper.digitByLocate(item.discountPercent.toString())}%",
+                                text = "${DigitHelper.digitByLocateAndSeparator(item.discountPercent.toString())}%",
                                 color = Color.White,
                                 style = MaterialTheme.typography.h6,
                                 fontWeight = FontWeight.Bold,
@@ -157,8 +162,8 @@ fun MostFavoriteProductsOffer(item: StoreProduct) {
                                     fontWeight = FontWeight.SemiBold,
                                 )
 
-                                Image(
-                                    painter = painterResource(id = R.drawable.toman),
+                                Icon(
+                                    painter = currencyLogoChangeByLanguage(),
                                     contentDescription = "",
                                     modifier = Modifier
                                         .size(MaterialTheme.spacing.semiLarge)
@@ -186,6 +191,7 @@ fun MostFavoriteProductsOffer(item: StoreProduct) {
 
             Divider(
                 Modifier
+                    .padding(start = MaterialTheme.spacing.semiMedium)
                     .width(1.dp)
                     .height(320.dp)
                     .alpha(0.4f),
@@ -197,4 +203,14 @@ fun MostFavoriteProductsOffer(item: StoreProduct) {
     }
 
 
+}
+
+
+@Composable
+private fun currencyLogoChangeByLanguage(): Painter {
+    return if (Constants.USER_LANGUAGE == Constants.ENGLISH_LANGUAGE) {
+        painterResource(id = R.drawable.dollar)
+    } else {
+        painterResource(id = R.drawable.toman)
+    }
 }

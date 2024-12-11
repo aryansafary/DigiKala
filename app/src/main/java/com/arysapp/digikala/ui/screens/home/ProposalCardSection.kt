@@ -1,9 +1,7 @@
 package com.arysapp.digikala.ui.screens.home
+
 import android.util.Log
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
@@ -13,12 +11,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.arysapp.digikala.data.model.home.Slider
 import com.arysapp.digikala.data.remote.NetworkResult
-import com.arysapp.digikala.ui.theme.roundedCornerShape
+import com.arysapp.digikala.ui.theme.roundedShape
 import com.arysapp.digikala.ui.theme.spacing
 import com.arysapp.digikala.viewmodel.HomeViewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ProposalCardSection(
     viewModel: HomeViewModel = hiltViewModel()
@@ -46,16 +45,17 @@ fun ProposalCardSection(
         }
     }
 
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
+    //LazyVerticalGrid
+    FlowRow(
+        maxItemsInEachRow = 2,
         modifier = Modifier
             .fillMaxWidth()
             .height(290.dp)
             .padding(MaterialTheme.spacing.small)
     ) {
-       items(bannersList){item->
-           ProposalCardItem(item)
-       }
+        for (item in bannersList) {
+            ProposalCardItem(item)
+        }
     }
 
 }
@@ -64,7 +64,7 @@ fun ProposalCardSection(
 @Composable
 fun ProposalCardItem(imgLink: Slider) {
     Card(
-        shape = MaterialTheme.roundedCornerShape.semiMedium,
+        shape = MaterialTheme.roundedShape.semiMedium,
         modifier = Modifier
             .fillMaxWidth(0.5f)
             .height(140.dp)
@@ -76,11 +76,10 @@ fun ProposalCardItem(imgLink: Slider) {
 
         GlideImage(
             model = imgLink.image,
-            contentDescription = "Proposal Banner",
+            contentDescription = null,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
 
     }
 }
-
