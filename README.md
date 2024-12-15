@@ -73,17 +73,18 @@ A fully-featured **e-commerce Android application** inspired by DigiKala, offeri
 ## 📸 Screenshots
 
 ### **Dashboard**
-<img src="photos/dashboardScreen.png" alt="Dashboard Screenshot" width="600">
+<img src="photos/dashboardScreen.png" alt="Dashboard Screenshot" width="600" height="400"/>
 ### **Profile Section**
-<img src="photos/profileScreen.png" alt="Profile Screenshot" width="600">
+<img src="photos/profileScreen.png" alt="Profile Screenshot" width="600" height="400"/>
 ### **Shopping Cart**
-<img src="photos/basketScreen.png" alt="Basket Screenshot" width="600">
+<img src="photos/basketScreen.png" alt="Basket Screenshot" width="600" height="400"/>
 ### **Categories**
-<img src="photos/categoryScreen.png" alt="Category Screenshot" width="600">
+<img src="photos/categoryScreen.png" alt="Category Screenshot" width="600" height="400"/>
 ### **Light Theme**
-<img src="photos/dashboardLightScreen.png" alt="Dashboard Screenshot" width="600">
+<img src="photos/dashboardLightScreen.png" alt="Dashboard Screenshot" width="600" height="400"/>
 ### **Dark Theme**
-<img src="photos/dashboardDarkScreen.png" alt="Dashboard Screenshot" width="600">
+<img src="photos/dashboardDarkScreen.png" alt="Dashboard Screenshot" width="600" height="400"/>
+
 ---
 
 ## 📚 Setup and Installation
